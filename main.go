@@ -6,6 +6,7 @@ import (
   "fmt"
   "log"
   "os"
+  "strings"
 )
 
 func main() {
@@ -24,14 +25,22 @@ func extractDialogue(path string) {
     log.Fatal(err)
     os.Exit(1)
   }
-  fmt.Println(scanner.Text())
+  dPos := getDialoguePosition(scanner)
+  fmt.Println(dPos, scanner.Text())
 }
 
 func removePreDialogueInfo(s *bufio.Scanner) (*bufio.Scanner, error) {
   for s.Scan() {
     if s.Text() == "[Events]" {
+      s.Scan()
       return s, nil
     }
   }
   return nil, errors.New("There is no '[Events]' tag in the file.")
+}
+
+func getDialoguePosition(s *bufio.Scanner) int {
+  pos := strings.Count(s.Text(), ",")
+  s.Scan()
+  return pos
 }
