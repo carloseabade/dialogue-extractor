@@ -20,7 +20,7 @@ func extractDialogue(path string) {
     os.Exit(1)
   }
   scanner := bufio.NewScanner(f)
-  scanner, err = removePreDialogueInfo(scanner)
+  err = removePreDialogueInfo(scanner)
   if err != nil {
     log.Fatal(err)
     os.Exit(1)
@@ -29,14 +29,14 @@ func extractDialogue(path string) {
   fmt.Println(dPos, scanner.Text())
 }
 
-func removePreDialogueInfo(s *bufio.Scanner) (*bufio.Scanner, error) {
+func removePreDialogueInfo(s *bufio.Scanner) error {
   for s.Scan() {
     if s.Text() == "[Events]" {
       s.Scan()
-      return s, nil
+      return nil
     }
   }
-  return nil, errors.New("There is no '[Events]' tag in the file.")
+  return errors.New("There is no '[Events]' tag in the file.")
 }
 
 func getDialoguePosition(s *bufio.Scanner) int {
