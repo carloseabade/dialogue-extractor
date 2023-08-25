@@ -25,8 +25,7 @@ func extractDialogue(path string) {
     log.Fatal(err)
     os.Exit(1)
   }
-  dPos := getDialoguePosition(scanner)
-  dialogueLines := getDialogues(scanner, dPos)
+  dialogueLines := getDialogues(scanner)
   fmt.Println(strings.Join(dialogueLines, "\n"))
 }
 
@@ -45,7 +44,9 @@ func getDialoguePosition(s *bufio.Scanner) int {
   return pos
 }
 
-func getDialogues(s *bufio.Scanner, dPos int) []string {
+func getDialogues(s *bufio.Scanner) []string {
+  dPos := getDialoguePosition(s)
+
   var lines []string
   var line string
   for s.Scan() {
