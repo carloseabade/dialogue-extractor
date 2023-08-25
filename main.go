@@ -26,7 +26,8 @@ func extractDialogue(path string) {
     os.Exit(1)
   }
   dPos := getDialoguePosition(scanner)
-  fmt.Println(dPos, scanner.Text())
+  dialogueLines := getDialogues(scanner, dPos)
+  fmt.Println(strings.Join(dialogueLines, "\n"))
 }
 
 func removePreDialogueInfo(s *bufio.Scanner) error {
@@ -42,4 +43,14 @@ func removePreDialogueInfo(s *bufio.Scanner) error {
 func getDialoguePosition(s *bufio.Scanner) int {
   pos := strings.Count(s.Text(), ",")
   return pos
+}
+
+func getDialogues(s *bufio.Scanner, dPos int) []string {
+  var lines []string
+  var line string
+  for s.Scan() {
+    line = strings.Join(strings.Split(s.Text(), ",")[dPos:] ,"")
+    lines = append(lines, line)
+  }
+  return lines
 }
