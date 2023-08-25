@@ -48,10 +48,13 @@ func getDialogues(s *bufio.Scanner) []string {
   dPos := getDialoguePosition(s)
 
   var lines []string
-  var line string
+  var text, line string
   for s.Scan() {
-    line = strings.Join(strings.Split(s.Text(), ",")[dPos:] ,"")
-    lines = append(lines, line)
+    text = s.Text()
+    if strings.HasPrefix(text, "Dialogue") {
+      line = strings.Join(strings.Split(s.Text(), ",")[dPos:] ,"")
+      lines = append(lines, line)
+    }
   }
   return lines
 }
