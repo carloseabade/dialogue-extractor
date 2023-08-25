@@ -41,6 +41,5 @@ func removePreDialogueInfo(s *bufio.Scanner) error {
 
 func getDialoguePosition(s *bufio.Scanner) int {
   pos := strings.Count(s.Text(), ",")
-  s.Scan()
   return pos
 }
