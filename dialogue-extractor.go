@@ -3,17 +3,12 @@ package main
 import (
   "bufio"
   "errors"
-  "fmt"
   "log"
   "os"
   "strings"
 )
 
-func main() {
-  extractDialogue("sub.ass")
-}
-
-func extractDialogue(path string) {
+func extractDialogue(path string) string {
   f, err := os.Open(path)
   if err != nil {
     log.Fatal(err)
@@ -26,7 +21,7 @@ func extractDialogue(path string) {
     os.Exit(1)
   }
   dialogueLines := getDialogues(scanner)
-  fmt.Println(strings.Join(dialogueLines, "\n"))
+  return strings.Join(dialogueLines, "\n")
 }
 
 func removePreDialogueInfo(s *bufio.Scanner) error {
