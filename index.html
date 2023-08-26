@@ -1,0 +1,39 @@
+<html style="scroll-behavior: unset;">
+<head style="scroll-behavior: unset;">
+  <meta charset="utf-8" style="scroll-behavior: unset;">
+  <meta name="viewport" content="width=device-width, initial-scale=1" style="scroll-behavior: unset;">
+  <title style="scroll-behavior: unset;">Dialogue extractor</title>
+  <style type="text/css" style="scroll-behavior: unset;">
+    body{
+      margin:40px auto;
+      max-width:650px;
+      line-height:1.6;
+      font-size:18px;
+      color:#444;
+      padding:0 10px
+    }
+    h1,h2,h3{
+      line-height:1.2
+    }
+  </style>
+  <style type="text/css" style="scroll-behavior: unset;">
+    @media print {
+      .TridactylStatusIndicator {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body style="scroll-behavior: unset;">
+  <header style="scroll-behavior: unset;">
+    <h1 style="scroll-behavior: unset;">Dialogue extractor</h1>
+  </header>
+  <p style="scroll-behavior: unset;">Click on the "Choose File" button to upload a file:</p>
+  <p style="scroll-behavior: unset;">The file must be .ass format.</p>
+  <form enctype="multipart/form-data" action="/upload" method="post">
+    <input type="file" name="uploadFile">
+    <hr>
+    <input type="submit" value="Upload & Extract dialogues">
+  </form>
+</body>
+</html>
