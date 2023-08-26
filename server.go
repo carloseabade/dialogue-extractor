@@ -17,7 +17,7 @@ func main() {
 }
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
-  data, err := os.ReadFile("./index.html")
+  data, err := os.ReadFile("./public/index.html")
   if err != nil {
     log.Fatal(err)
     return
