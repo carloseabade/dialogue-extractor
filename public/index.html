@@ -1,4 +1,4 @@
-<html style="scroll-behavior: unset;">
+<html style="scroll-behavior: unset;" lang="en">
 <head style="scroll-behavior: unset;">
   <meta charset="utf-8" style="scroll-behavior: unset;">
   <meta name="viewport" content="width=device-width, initial-scale=1" style="scroll-behavior: unset;">
@@ -28,10 +28,9 @@
   <header style="scroll-behavior: unset;">
     <h1 style="scroll-behavior: unset;">Dialogue extractor</h1>
   </header>
-  <p style="scroll-behavior: unset;">Click on the "Choose File" button to upload a file:</p>
-  <p style="scroll-behavior: unset;">The file must be .ass format.</p>
+  <p style="scroll-behavior: unset;">Choose a file to upload, the file must be .ass format.</p>
   <form enctype="multipart/form-data" action="/upload" method="post">
-    <input type="file" name="uploadFile">
+    <input type="file" name="uploadFile" accept=".ass">
     <hr>
     <input type="submit" value="Upload & Extract dialogues">
   </form>
